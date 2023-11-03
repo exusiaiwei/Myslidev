@@ -1,2 +1,2 @@
-# slidev-showcase
+# Myslidev
 Show my ideas through Slidev
