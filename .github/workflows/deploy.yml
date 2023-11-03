@@ -1,0 +1,27 @@
+name: Deploy pages
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: List Slidev projects
+        id: list_projects
+        run: |
+          echo "::set-output name=project_dirs::$(ls -d Myslidev/*)"
+      - name: Deploy pages
+        run: |
+          IFS=$'\n'
+          for project_dir in Myslidev/*; do
+            project_name=$(basename $project_dir)
+            echo "Deploying $project_name..."
+            cd $project_dir
+            npm install
+            npm run build
+            cd ..
+            echo "Deployed $project_name"
+          done
+        shell: bash
