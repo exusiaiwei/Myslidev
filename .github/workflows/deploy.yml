@@ -11,7 +11,7 @@ jobs:
       - name: List Slidev projects
         id: list_projects
         run: |
-          echo "::set-output name=project_dirs::$(ls -d Myslidev/*)"
+          echo "::set-output name=project_dirs::$(ls -d Myslidev)"
       - name: Deploy pages
         run: |
           IFS=$'\n'
