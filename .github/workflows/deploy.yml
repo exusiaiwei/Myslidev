@@ -11,11 +11,11 @@ jobs:
       - name: List Slidev projects
         id: list_projects
         run: |
-          echo "::set-output name=project_dirs::$(ls -d Myslidev)"
+          echo "::set-output name=project_dirs::$(ls -d */)"
       - name: Deploy pages
         run: |
           IFS=$'\n'
-          for project_dir in Myslidev/*; do
+          for project_dir in ${{ steps.list_projects.outputs.project_dirs }}; do
             project_name=$(basename $project_dir)
             echo "Deploying $project_name..."
             cd $project_dir
