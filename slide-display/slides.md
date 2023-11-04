@@ -16,7 +16,7 @@ title: Welcome to Slidev
 mdc: true
 ---
 
-# Welcome to Slidev测试
+# Slidev Displaying
 
 Presentation slides for developers
 
